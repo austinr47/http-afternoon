@@ -14,16 +14,15 @@ class Home extends Component{
             posts: [{title: "Loading...",image: 'https://unsplash.it/900/400/?random'}]
         }
 
-        this.componentWillMount = this.componentWillMount.bind(this);
     }
 
     // insert componentWillMount:
     componentWillMount(){
-        axios.get('/api/featured').then(results=>{
+        axios.get('/api/featured').then(resp=>{
             this.setState({
-                featured: results.data,
-                index: (~~(Math.random() * results.data.length) + 0),
-                posts: results.data
+                featured: resp.data,
+                index: (~~(Math.random() * resp.data.length) + 0),
+                posts: resp.data
             })
         }).catch(console.log)   
     }
